@@ -7,27 +7,31 @@ import static org.junit.Assert.assertThat;
 
 public class SortTest {
 
-    public static final int[] UNSORTED_ARRAY = {9, 8, 7, 6, 5, 4, 3, 2, 1};
-    public static final int[] SORTED_ARRAY = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    public static final Integer[] UNSORTED_ARRAY = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+    public static final Integer[] SORTED_ARRAY = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
     @Test
     public void testSortIsCorrect() throws Exception {
-        final int[] unsortedArray = givenUnsortedArray();
+        final Integer[] unsortedArray = givenUnsortedArray();
 
-        final int[] sortedArray = whenSort(unsortedArray);
+        final Integer[] sortedArray = whenSort(unsortedArray);
 
         thenTheArrayIsSorted(sortedArray);
     }
 
-    private void thenTheArrayIsSorted(final int[] sortedArray) {
+    private void thenTheArrayIsSorted(final Integer[] sortedArray) {
         assertThat(sortedArray, equalTo(SORTED_ARRAY));
     }
 
-    private int[] whenSort(final int[] unsortedArray) {
-        return new InsertionSort().sort(unsortedArray);
+    private Integer[] whenSort(final Integer[] unsortedArray) {
+        return sort().sort(unsortedArray);
     }
 
-    private int[] givenUnsortedArray() {
+    private Sort sort() {
+        return new InsertionSort();
+    }
+
+    private Integer[] givenUnsortedArray() {
         return UNSORTED_ARRAY;
     }
 }

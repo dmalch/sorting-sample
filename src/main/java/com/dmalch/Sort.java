@@ -1,5 +1,5 @@
 package com.dmalch;
 
 public interface Sort {
-    int[] sort(final int[] unsortedArray);
+    <T extends Comparable<T>> T[] sort(final T[] unsortedArray);
 }

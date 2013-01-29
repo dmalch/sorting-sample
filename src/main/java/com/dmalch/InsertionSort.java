@@ -10,7 +10,7 @@ public class InsertionSort implements Sort {
     private static final transient Logger logger = LoggerFactory.getLogger(InsertionSort.class);
 
     @Override
-    public int[] sort(final int[] unsortedArray) {
+    public <T extends Comparable<T>> T[] sort(final T[] unsortedArray) {
 
         logger.info(Arrays.toString(unsortedArray));
 
@@ -25,18 +25,18 @@ public class InsertionSort implements Sort {
         return unsortedArray;
     }
 
-    private void swap(final int i, final int indexOfMinimalElement, final int[] unsortedArray) {
-        final int tmp = unsortedArray[indexOfMinimalElement];
+    private <T extends Comparable<T>> void swap(final int i, final int indexOfMinimalElement, final T[] unsortedArray) {
+        final T tmp = unsortedArray[indexOfMinimalElement];
         unsortedArray[indexOfMinimalElement] = unsortedArray[i];
         unsortedArray[i] = tmp;
     }
 
-    private int findIndexOfMinimalElementFrom(final int startIndex, final int[] unsortedArray) {
-        int min = unsortedArray[startIndex];
+    private <T extends Comparable<T>> int findIndexOfMinimalElementFrom(final int startIndex, final T[] unsortedArray) {
+        T min = unsortedArray[startIndex];
         int indexOfMin = startIndex;
 
         for (int i = startIndex; i < unsortedArray.length; i++) {
-            if (unsortedArray[i] < min) {
+            if (unsortedArray[i].compareTo(min) < 0) {
                 min = unsortedArray[i];
                 indexOfMin = i;
             }
