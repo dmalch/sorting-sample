@@ -1,3 +1,5 @@
+package com.dmalch;
+
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -22,7 +24,7 @@ public class SortTest {
     }
 
     private int[] whenSort(final int[] unsortedArray) {
-        return unsortedArray;
+        return new InsertionSort().sort(unsortedArray);
     }
 
     private int[] givenUnsortedArray() {
