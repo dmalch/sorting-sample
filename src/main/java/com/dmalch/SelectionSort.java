@@ -32,12 +32,10 @@ public class SelectionSort implements Sort {
     }
 
     private <T extends Comparable<T>> int findIndexOfMinimalElementFrom(final int startIndex, final T[] unsortedArray) {
-        T min = unsortedArray[startIndex];
         int indexOfMin = startIndex;
 
-        for (int i = startIndex; i < unsortedArray.length; i++) {
-            if (unsortedArray[i].compareTo(min) < 0) {
-                min = unsortedArray[i];
+        for (int i = startIndex + 1; i < unsortedArray.length; i++) {
+            if (unsortedArray[i].compareTo(unsortedArray[indexOfMin]) < 0) {
                 indexOfMin = i;
             }
         }
