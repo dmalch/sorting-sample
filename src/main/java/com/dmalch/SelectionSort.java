@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
-public class InsertionSort implements Sort {
+public class SelectionSort implements Sort {
 
-    private static final transient Logger logger = LoggerFactory.getLogger(InsertionSort.class);
+    private static final transient Logger logger = LoggerFactory.getLogger(SelectionSort.class);
 
     @Override
     public <T extends Comparable<T>> T[] sort(final T[] unsortedArray) {

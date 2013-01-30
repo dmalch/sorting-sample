@@ -5,8 +5,7 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-public class SortTest {
-
+public abstract class AbstractSortTest {
     public static final Integer[] UNSORTED_ARRAY = {9, 8, 7, 6, 5, 4, 3, 2, 1};
     public static final Integer[] SORTED_ARRAY = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
@@ -27,9 +26,7 @@ public class SortTest {
         return sort().sort(unsortedArray);
     }
 
-    private Sort sort() {
-        return new InsertionSort();
-    }
+    protected abstract Sort sort();
 
     private Integer[] givenUnsortedArray() {
         return UNSORTED_ARRAY;
