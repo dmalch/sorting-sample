@@ -24,11 +24,7 @@ public class TopDownMergeSort extends AbstractSort implements Sort {
     }
 
     private <T extends Comparable<T>> void mergeRecursively(final T[] unsortedArray, final int start, final int end, final int mid) {
-        if (end - start <= 2) {
-            if (less(unsortedArray[end - 1], unsortedArray[start])) {
-                swap(unsortedArray, start, end - 1);
-                logger.info(Arrays.toString(unsortedArray));
-            }
+        if (end - start <= 1) {
             return;
         }
 
