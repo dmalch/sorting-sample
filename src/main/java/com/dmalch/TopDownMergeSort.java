@@ -49,7 +49,6 @@ public class TopDownMergeSort extends AbstractSort implements Sort {
 
         int firstIndex = start;
         int secondIndex = mid;
-        int auxMid = mid - start;
 
         for (int i = 0; i < auxArray.length; i++) {
             if (firstIndex >= mid) {
