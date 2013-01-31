@@ -29,7 +29,7 @@ public class SelectionSort extends AbstractSort implements Sort {
         int indexOfMin = startIndex;
 
         for (int i = startIndex + 1; i < unsortedArray.length; i++) {
-            if (less(unsortedArray, i, indexOfMin)) {
+            if (less(unsortedArray[i], unsortedArray[indexOfMin])) {
                 indexOfMin = i;
             }
         }

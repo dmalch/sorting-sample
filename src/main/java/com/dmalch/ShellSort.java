@@ -34,7 +34,7 @@ public class ShellSort extends AbstractSort implements Sort {
     }
 
     private <T extends Comparable<T>> void swapIfInIncorrectOrder(final int startIndex, final int h, final T[] unsortedArray) {
-        for (int j = startIndex; j >= h && less(unsortedArray, j, j - h); j -= h) {
+        for (int j = startIndex; j >= h && less(unsortedArray[j], unsortedArray[(j - h)]); j -= h) {
             swap(unsortedArray, j, j - h);
         }
     }

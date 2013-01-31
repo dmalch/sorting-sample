@@ -24,7 +24,7 @@ public class InsertionSort extends AbstractSort implements Sort {
     }
 
     private <T extends Comparable<T>> void swapIfInIncorrectOrder(final int startIndex, final T[] unsortedArray) {
-        for (int j = startIndex; j > 0 && less(unsortedArray, j, j - 1); j--) {
+        for (int j = startIndex; j > 0 && less(unsortedArray[j], unsortedArray[(j - 1)]); j--) {
             swap(unsortedArray, j, j - 1);
         }
     }
