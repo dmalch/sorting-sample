@@ -17,15 +17,20 @@ public class ShellSort extends AbstractSort implements Sort {
         int h = calcH(unsortedArray);
 
         while (h >= 1) {
-            for (int i = h; i < unsortedArray.length; i++) {
-                swapIfInIncorrectOrder(i, h, unsortedArray);
+            doSort(h, unsortedArray);
 
-                logger.info(Arrays.toString(unsortedArray));
-            }
             h = h / 3;
         }
 
         return unsortedArray;
+    }
+
+    private <T extends Comparable<T>> void doSort(final int h, final T[] unsortedArray) {
+        for (int i = h; i < unsortedArray.length; i++) {
+            swapIfInIncorrectOrder(i, h, unsortedArray);
+
+            logger.info(Arrays.toString(unsortedArray));
+        }
     }
 
     private <T extends Comparable<T>> void swapIfInIncorrectOrder(final int startIndex, final int h, final T[] unsortedArray) {
