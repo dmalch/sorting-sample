@@ -45,7 +45,7 @@ public class TopDownMergeSort extends AbstractSort implements Sort {
 
     private <T extends Comparable<T>> void merge(final T[] unsortedArray, final int start, final int end, final int mid) {
 
-        Object[] auxArray = new Object[end - start];
+        Comparable[] auxArray = new Comparable[end - start];
 
         int firstIndex = start;
         int secondIndex = mid;
