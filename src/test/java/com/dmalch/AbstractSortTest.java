@@ -15,6 +15,8 @@ public abstract class AbstractSortTest {
     public static final Integer[] UNSORTED_SHORT_ARRAY = {2, 1};
     public static final Integer[] SORTED_SHORT_ARRAY = {1, 2};
 
+    public static final Integer[] EMPTY_ARRAY = {};
+
     @Test
     public void testSortIsCorrectForArraysWithEvenLength() throws Exception {
         doTestSortIsCorrect(UNSORTED_EVEN_ARRAY.clone(), SORTED_EVEN_ARRAY.clone());
@@ -28,6 +30,11 @@ public abstract class AbstractSortTest {
     @Test
     public void testSortIsCorrectForArraysWithLittleLength() throws Exception {
         doTestSortIsCorrect(UNSORTED_SHORT_ARRAY.clone(), SORTED_SHORT_ARRAY.clone());
+    }
+
+    @Test
+    public void testSortEmptyArray() throws Exception {
+        doTestSortIsCorrect(EMPTY_ARRAY.clone(), EMPTY_ARRAY.clone());
     }
 
     private void doTestSortIsCorrect(final Integer[] unsortedArray, final Integer[] sortedArray) {
