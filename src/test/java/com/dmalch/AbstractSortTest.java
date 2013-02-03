@@ -1,6 +1,10 @@
 package com.dmalch;
 
+import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -16,6 +20,11 @@ public abstract class AbstractSortTest {
     public static final Integer[] SORTED_SHORT_ARRAY = {1, 2};
 
     public static final Integer[] EMPTY_ARRAY = {};
+
+    @Test
+    public void testSortIsCorrectForSortedArrays() throws Exception {
+        doTestSortIsCorrect(SORTED_EVEN_ARRAY.clone(), SORTED_EVEN_ARRAY.clone());
+    }
 
     @Test
     public void testSortIsCorrectForArraysWithEvenLength() throws Exception {
@@ -35,6 +44,22 @@ public abstract class AbstractSortTest {
     @Test
     public void testSortEmptyArray() throws Exception {
         doTestSortIsCorrect(EMPTY_ARRAY.clone(), EMPTY_ARRAY.clone());
+    }
+
+    @Test
+    @Ignore
+    public void testSortRandomSetOfData() throws Exception {
+        final Integer[] integerArray = generateArray();
+
+        whenSort(integerArray);
+    }
+
+    private Integer[] generateArray() {
+        final ArrayList<Integer> integers = new ArrayList<Integer>();
+        for (int i = 0; i < 1000; i++) {
+            integers.add(new Random().nextInt(100));
+        }
+        return integers.toArray(new Integer[integers.size()]);
     }
 
     private void doTestSortIsCorrect(final Integer[] unsortedArray, final Integer[] sortedArray) {
