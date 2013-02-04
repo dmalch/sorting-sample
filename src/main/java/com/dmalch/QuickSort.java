@@ -3,9 +3,7 @@ package com.dmalch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 
 public class QuickSort extends AbstractSort implements Sort {
 
@@ -33,33 +31,24 @@ public class QuickSort extends AbstractSort implements Sort {
     }
 
     private <T extends Comparable<T>> int partition(final T[] unsortedArray, final int startIndex, final int endIndex) {
+        int leftIndex = startIndex + 1;
+        int rightIndex = endIndex;
         int partitioningElementIndex = startIndex;
+        T partitioningElement = unsortedArray[partitioningElementIndex];
 
-        final ArrayList<T> lowerElements = new ArrayList<T>();
-        final ArrayList<T> greaterElements = new ArrayList<T>();
-
-        for (int i = startIndex + 1; i <= endIndex; i++) {
-            if (less(unsortedArray[i], unsortedArray[partitioningElementIndex])) {
-                lowerElements.add(unsortedArray[i]);
+        while (leftIndex < rightIndex) {
+            if (less(unsortedArray[leftIndex], partitioningElement)) {
+                leftIndex++;
+            } else if (!less(unsortedArray[rightIndex], partitioningElement)) {
+                rightIndex--;
             } else {
-                greaterElements.add(unsortedArray[i]);
+                swap(unsortedArray, leftIndex, rightIndex);
             }
         }
 
-        final Iterator<T> lowerIterator = lowerElements.iterator();
-        final Iterator<T> greaterIterator = greaterElements.iterator();
-
-        final T partitioningElement = unsortedArray[partitioningElementIndex];
-        partitioningElementIndex = startIndex + lowerElements.size();
-
-        for (int i = startIndex; i < unsortedArray.length; i++) {
-            if (lowerIterator.hasNext()) {
-                unsortedArray[i] = lowerIterator.next();
-            } else if (i == partitioningElementIndex) {
-                unsortedArray[partitioningElementIndex] = partitioningElement;
-            } else if (greaterIterator.hasNext()) {
-                unsortedArray[i] = greaterIterator.next();
-            }
+        if (less(unsortedArray[leftIndex], partitioningElement)) {
+            swap(unsortedArray, startIndex, leftIndex);
+            partitioningElementIndex = leftIndex;
         }
 
         logger.info(Arrays.toString(unsortedArray));

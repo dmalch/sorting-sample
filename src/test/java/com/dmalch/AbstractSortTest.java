@@ -1,6 +1,5 @@
 package com.dmalch;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -47,7 +46,6 @@ public abstract class AbstractSortTest {
     }
 
     @Test
-    @Ignore
     public void testSortRandomSetOfData() throws Exception {
         final Integer[] integerArray = generateArray();
 
@@ -56,7 +54,7 @@ public abstract class AbstractSortTest {
 
     private Integer[] generateArray() {
         final ArrayList<Integer> integers = new ArrayList<Integer>();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
             integers.add(new Random().nextInt(100));
         }
         return integers.toArray(new Integer[integers.size()]);
