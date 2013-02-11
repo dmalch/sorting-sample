@@ -1,5 +1,6 @@
 package com.dmalch.priority;
 
+import static java.lang.Math.*;
 import static java.lang.System.arraycopy;
 
 public class ArrayPriorityQueue {
@@ -24,8 +25,10 @@ public class ArrayPriorityQueue {
     }
 
     private Integer[] toArray() {
-        final Integer[] ret = new Integer[queue.length - 1];
-        arraycopy(queue, 0, ret, 0, queue.length - 1);
+        final int size = min(actualSize, queue.length - 1);
+
+        final Integer[] ret = new Integer[size];
+        arraycopy(queue, 0, ret, 0, size);
         return ret;
     }
 
