@@ -21,10 +21,18 @@ public class ArrayPriorityQueueTest {
     }
 
     private void doTest(final Integer[] unsortedArray, final Integer[] expectedArray) {
-        final ArrayPriorityQueue priorityQueue = new ArrayPriorityQueue(5);
+        final ArrayPriorityQueue priorityQueue = givenPriorityQueueWithSize(5);
 
-        final Integer[] top5 = priorityQueue.addAllAndDeleteMin(unsortedArray);
+        final Integer[] top5 = whenAddValuesToQueue(unsortedArray, priorityQueue);
 
         assertThat(top5, equalTo(expectedArray));
+    }
+
+    private Integer[] whenAddValuesToQueue(final Integer[] unsortedArray, final ArrayPriorityQueue priorityQueue) {
+        return priorityQueue.addAllAndDeleteMin(unsortedArray);
+    }
+
+    private ArrayPriorityQueue givenPriorityQueueWithSize(final int maxSize) {
+        return new ArrayPriorityQueue(maxSize);
     }
 }
