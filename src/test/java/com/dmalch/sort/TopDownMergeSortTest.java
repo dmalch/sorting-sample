@@ -1,4 +1,4 @@
-package com.dmalch;
+package com.dmalch.sort;
 
 public class TopDownMergeSortTest extends AbstractSortTest {
 

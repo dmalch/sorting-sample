@@ -1,5 +1,6 @@
-package com.dmalch;
+package com.dmalch.sort;
 
+import com.dmalch.sort.Sort;
 import org.junit.Test;
 
 import java.util.ArrayList;
