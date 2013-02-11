@@ -15,7 +15,7 @@ public class BottomUpMergeSort extends AbstractMergeSort implements Sort {
     public <T extends Comparable<T>> T[] sort(final T[] unsortedArray) {
         logger.info(Arrays.toString(unsortedArray));
 
-        int subArrayLength = 1;
+        final int subArrayLength = 1;
 
         final T[] auxArray = unsortedArray.clone();
 

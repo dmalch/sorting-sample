@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
-public class TopDownHeapSort extends AbstractSort implements Sort {
+public class TopDownHeapSort extends AbstractHeapSort implements Sort {
 
     private static final transient Logger logger = LoggerFactory.getLogger(TopDownHeapSort.class);
 
@@ -26,30 +26,6 @@ public class TopDownHeapSort extends AbstractSort implements Sort {
             siftDown(unsortedArray, i, unsortedArray.length - 1);
 
             logger.info(Arrays.toString(unsortedArray));
-        }
-    }
-
-    private <T extends Comparable<T>> void siftDown(final T[] unsortedArray, final int start, final int end) {
-        int root = start;
-
-        while (root * 2 + 1 <= end) {
-            final int child = root * 2 + 1;
-            int swap = root;
-
-            if (less(unsortedArray[root], unsortedArray[child])) {
-                swap = child;
-            }
-
-            if (child + 1 <= end && less(unsortedArray[swap], unsortedArray[child + 1])) {
-                swap = child + 1;
-            }
-
-            if (swap != root) {
-                swap(unsortedArray, root, swap);
-                root = swap;
-            } else {
-                break;
-            }
         }
     }
 
