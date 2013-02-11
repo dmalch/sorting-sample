@@ -1,7 +1,7 @@
 package com.dmalch.sort;
 
 public class AbstractHeapSort extends AbstractSort {
-    protected <T extends Comparable<T>> void siftDown(final T[] unsortedArray, final int start, final int end) {
+    public static <T extends Comparable<T>> void siftDown(final T[] unsortedArray, final int start, final int end) {
         int root = start;
 
         while (root * 2 + 1 <= end) {
@@ -25,7 +25,7 @@ public class AbstractHeapSort extends AbstractSort {
         }
     }
 
-    protected <T extends Comparable<T>> void siftUp(final T[] unsortedArray, final int start, final int end) {
+    public static <T extends Comparable<T>> void siftUp(final T[] unsortedArray, final int start, final int end) {
 
         int child = end;
 

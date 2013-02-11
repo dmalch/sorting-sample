@@ -1,30 +1,19 @@
 package com.dmalch.priority;
 
-import static java.lang.Math.*;
+import static java.lang.Math.min;
 import static java.lang.System.arraycopy;
 
-public class UnorderedArrayPriorityQueue {
+public class UnorderedArrayPriorityQueue extends AbstractPriorityQueue {
     private final Integer[] queue;
     private int actualSize;
 
     public UnorderedArrayPriorityQueue(final int maxSize) {
         queue = new Integer[maxSize + 1];
+        actualSize = 0;
     }
 
-    public Integer[] addAllAndDeleteMin(final Integer[] unsortedEvenArray) {
-        for (final Integer element : unsortedEvenArray) {
-
-            if (noMoreSpace()) {
-                deleteMin();
-            }
-
-            insert(element);
-        }
-
-        return toArray();
-    }
-
-    private Integer[] toArray() {
+    @Override
+    protected Integer[] toArray() {
         final int size = min(actualSize, queue.length - 1);
 
         final Integer[] ret = new Integer[size];
@@ -32,24 +21,27 @@ public class UnorderedArrayPriorityQueue {
         return ret;
     }
 
-    private void insert(final Integer element) {
+    @Override
+    protected void insert(final Integer element) {
         queue[actualSize++] = element;
     }
 
-    private void deleteMin() {
-        Integer min = 0;
+    @Override
+    protected void deleteMax() {
+        Integer max = 0;
 
         for (int i = 1; i < queue.length; i++) {
-            if (queue[min].compareTo(queue[i]) > 0) {
-                min = i;
+            if (queue[max].compareTo(queue[i]) < 0) {
+                max = i;
             }
         }
 
-        arraycopy(queue, min + 1, queue, min, queue.length - min - 1);
+        arraycopy(queue, max + 1, queue, max, queue.length - max - 1);
         actualSize--;
     }
 
-    private boolean noMoreSpace() {
+    @Override
+    protected boolean noMoreSpace() {
         return actualSize >= queue.length;
     }
 

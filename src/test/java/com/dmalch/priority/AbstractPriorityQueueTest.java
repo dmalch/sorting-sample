@@ -7,7 +7,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public abstract class AbstractPriorityQueueTest {
     public static final Integer[] UNSORTED_ARRAY = {12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-    public static final Integer[] TOP_5_FROM_ARRAY = {12, 11, 10, 9, 8};
+    public static final Integer[] TOP_5_FROM_ARRAY = {5, 4, 3, 2, 1};
     public static final Integer[] EMPTY_ARRAY = new Integer[]{};
 
     @Test
@@ -21,16 +21,16 @@ public abstract class AbstractPriorityQueueTest {
     }
 
     private void doTest(final Integer[] unsortedArray, final Integer[] expectedArray) {
-        final UnorderedArrayPriorityQueue priorityQueue = givenPriorityQueueWithSize(5);
+        final PriorityQueue priorityQueue = givenPriorityQueueWithSize(5);
 
         final Integer[] top5 = whenAddValuesToQueue(unsortedArray, priorityQueue);
 
         assertThat(top5, equalTo(expectedArray));
     }
 
-    private Integer[] whenAddValuesToQueue(final Integer[] unsortedArray, final UnorderedArrayPriorityQueue priorityQueue) {
-        return priorityQueue.addAllAndDeleteMin(unsortedArray);
+    private Integer[] whenAddValuesToQueue(final Integer[] unsortedArray, final PriorityQueue priorityQueue) {
+        return priorityQueue.addAllAndDeleteMax(unsortedArray);
     }
 
-    protected abstract UnorderedArrayPriorityQueue givenPriorityQueueWithSize(int maxSize);
+    protected abstract PriorityQueue givenPriorityQueueWithSize(int maxSize);
 }
