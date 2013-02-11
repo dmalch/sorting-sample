@@ -3,11 +3,11 @@ package com.dmalch.priority;
 import static java.lang.Math.*;
 import static java.lang.System.arraycopy;
 
-public class ArrayPriorityQueue {
+public class UnorderedArrayPriorityQueue {
     private final Integer[] queue;
     private int actualSize;
 
-    public ArrayPriorityQueue(final int maxSize) {
+    public UnorderedArrayPriorityQueue(final int maxSize) {
         queue = new Integer[maxSize + 1];
     }
 

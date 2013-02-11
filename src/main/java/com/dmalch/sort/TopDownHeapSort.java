@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
-public class HeapSort extends AbstractSort implements Sort {
+public class TopDownHeapSort extends AbstractSort implements Sort {
 
-    private static final transient Logger logger = LoggerFactory.getLogger(HeapSort.class);
+    private static final transient Logger logger = LoggerFactory.getLogger(TopDownHeapSort.class);
 
     @Override
     public <T extends Comparable<T>> T[] sort(final T[] unsortedArray) {
