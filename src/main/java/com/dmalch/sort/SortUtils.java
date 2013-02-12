@@ -1,6 +1,6 @@
 package com.dmalch.sort;
 
-public final class AbstractSort {
+public final class SortUtils {
 
     public static <T extends Comparable<T>> boolean less(final T first, final T second) {
         return first.compareTo(second) < 0;

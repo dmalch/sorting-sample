@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
-import static com.dmalch.sort.AbstractSort.less;
-import static com.dmalch.sort.AbstractSort.swap;
+import static com.dmalch.sort.SortUtils.less;
+import static com.dmalch.sort.SortUtils.swap;
 
 public class SelectionSort implements Sort {
 

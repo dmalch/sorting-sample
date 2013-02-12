@@ -1,7 +1,7 @@
 package com.dmalch.priority;
 
-import static com.dmalch.sort.AbstractHeapSort.siftDown;
-import static com.dmalch.sort.AbstractHeapSort.siftUp;
+import static com.dmalch.sort.HeapUtils.siftDown;
+import static com.dmalch.sort.HeapUtils.siftUp;
 import static java.lang.Math.min;
 import static java.lang.System.arraycopy;
 import static java.util.Arrays.copyOf;

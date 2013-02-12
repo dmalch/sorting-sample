@@ -1,9 +1,9 @@
 package com.dmalch.sort;
 
-import static com.dmalch.sort.AbstractSort.less;
-import static com.dmalch.sort.AbstractSort.swap;
+import static com.dmalch.sort.SortUtils.less;
+import static com.dmalch.sort.SortUtils.swap;
 
-public class AbstractHeapSort {
+public final class HeapUtils {
     public static <T extends Comparable<T>> void siftDown(final T[] unsortedArray, final int start, final int end) {
         int root = start;
 

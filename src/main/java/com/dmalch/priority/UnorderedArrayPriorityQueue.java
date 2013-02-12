@@ -1,7 +1,6 @@
 package com.dmalch.priority;
 
-import com.dmalch.sort.AbstractSort;
-
+import static com.dmalch.sort.SortUtils.swap;
 import static java.lang.Math.min;
 import static java.util.Arrays.copyOf;
 
@@ -36,7 +35,7 @@ public class UnorderedArrayPriorityQueue<E extends Comparable<E>> extends Abstra
             }
         }
 
-        AbstractSort.swap(queue, max, actualSize - 1);
+        swap(queue, max, actualSize - 1);
         actualSize--;
     }
 
