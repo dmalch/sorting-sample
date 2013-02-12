@@ -3,7 +3,7 @@ package com.dmalch.priority;
 public class BinaryHeapPriorityQueueTest extends AbstractPriorityQueueTest {
 
     @Override
-    protected PriorityQueue givenPriorityQueueWithSize(final int maxSize) {
-        return new BinaryHeapPriorityQueue(maxSize);
+    protected PriorityQueue<Integer> givenPriorityQueueWithSize(final int maxSize) {
+        return new BinaryHeapPriorityQueue<Integer>(maxSize);
     }
 }

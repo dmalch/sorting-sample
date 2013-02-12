@@ -4,27 +4,26 @@ import static com.dmalch.sort.AbstractHeapSort.siftDown;
 import static com.dmalch.sort.AbstractHeapSort.siftUp;
 import static java.lang.Math.min;
 import static java.lang.System.arraycopy;
+import static java.util.Arrays.copyOf;
 
-public class BinaryHeapPriorityQueue extends AbstractPriorityQueue {
-    private final Integer[] heap;
+public class BinaryHeapPriorityQueue<E extends Comparable<E>> extends AbstractPriorityQueue<E> {
+    private final E[] heap;
     private int actualSize;
 
     public BinaryHeapPriorityQueue(final int maxSize) {
-        heap = new Integer[maxSize + 1];
+        heap = (E[]) new Comparable[maxSize + 1];
         actualSize = 0;
     }
 
     @Override
-    protected Integer[] toArray() {
+    protected Object[] toArray() {
         final int size = min(actualSize, heap.length - 1);
 
-        final Integer[] ret = new Integer[size];
-        arraycopy(heap, 0, ret, 0, size);
-        return ret;
+        return copyOf(heap, size);
     }
 
     @Override
-    public void insert(final Integer element) {
+    public void insert(final E element) {
         heap[actualSize++] = element;
         siftUp(heap, 0, actualSize - 1);
     }

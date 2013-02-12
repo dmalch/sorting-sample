@@ -3,28 +3,26 @@ package com.dmalch.priority;
 import com.dmalch.sort.AbstractSort;
 
 import static java.lang.Math.min;
-import static java.lang.System.arraycopy;
+import static java.util.Arrays.copyOf;
 
-public class UnorderedArrayPriorityQueue extends AbstractPriorityQueue {
-    private final Integer[] queue;
+public class UnorderedArrayPriorityQueue<E extends Comparable<E>> extends AbstractPriorityQueue<E> {
+    private final E[] queue;
     private int actualSize;
 
     public UnorderedArrayPriorityQueue(final int maxSize) {
-        queue = new Integer[maxSize + 1];
+        queue = (E[]) new Comparable[maxSize + 1];
         actualSize = 0;
     }
 
     @Override
-    protected Integer[] toArray() {
+    protected Object[] toArray() {
         final int size = min(actualSize, queue.length - 1);
 
-        final Integer[] ret = new Integer[size];
-        arraycopy(queue, 0, ret, 0, size);
-        return ret;
+        return copyOf(queue, size);
     }
 
     @Override
-    public void insert(final Integer element) {
+    public void insert(final E element) {
         queue[actualSize++] = element;
     }
 
