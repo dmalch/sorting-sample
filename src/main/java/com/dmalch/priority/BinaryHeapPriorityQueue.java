@@ -16,10 +16,10 @@ public class BinaryHeapPriorityQueue<E extends Comparable<E>> extends AbstractPr
     }
 
     @Override
-    protected Object[] toArray() {
+    protected E[] toArray(final Class<? extends E[]> aClass) {
         final int size = min(actualSize, heap.length - 1);
 
-        return copyOf(heap, size);
+        return copyOf(heap, size, aClass);
     }
 
     @Override

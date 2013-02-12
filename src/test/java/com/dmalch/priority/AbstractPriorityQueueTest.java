@@ -2,8 +2,6 @@ package com.dmalch.priority;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.arrayContainingInAnyOrder;
 
@@ -31,8 +29,7 @@ public abstract class AbstractPriorityQueueTest {
     }
 
     private Integer[] whenAddValuesToQueue(final Integer[] unsortedArray, final PriorityQueue<Integer> priorityQueue) {
-        final Object[] objects = priorityQueue.addAllAndDeleteMax(unsortedArray);
-        return Arrays.copyOf(objects, objects.length, unsortedArray.getClass());
+        return priorityQueue.addAllAndDeleteMax(unsortedArray, unsortedArray.getClass());
     }
 
     protected abstract PriorityQueue<Integer> givenPriorityQueueWithSize(int maxSize);

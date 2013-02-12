@@ -2,7 +2,7 @@ package com.dmalch.priority;
 
 public abstract class AbstractPriorityQueue<E extends Comparable<E>> implements PriorityQueue<E> {
     @Override
-    public Object[] addAllAndDeleteMax(final E[] unsortedEvenArray) {
+    public E[] addAllAndDeleteMax(final E[] unsortedEvenArray, final Class<? extends E[]> aClass) {
         for (final E element : unsortedEvenArray) {
             insert(element);
 
@@ -11,10 +11,10 @@ public abstract class AbstractPriorityQueue<E extends Comparable<E>> implements 
             }
         }
 
-        return toArray();
+        return toArray(aClass);
     }
 
-    protected abstract Object[] toArray();
+    protected abstract E[] toArray(final Class<? extends E[]> aClass);
 
     protected abstract boolean noMoreSpace();
 }

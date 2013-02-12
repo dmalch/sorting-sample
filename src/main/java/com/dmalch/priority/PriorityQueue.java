@@ -1,7 +1,7 @@
 package com.dmalch.priority;
 
 public interface PriorityQueue<E extends Comparable<E>> {
-    Object[] addAllAndDeleteMax(E[] unsortedEvenArray);
+    E[] addAllAndDeleteMax(E[] unsortedEvenArray, final Class<? extends E[]> aClass);
 
     void insert(E element);
 

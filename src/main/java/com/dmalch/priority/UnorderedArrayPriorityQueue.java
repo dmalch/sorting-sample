@@ -15,10 +15,10 @@ public class UnorderedArrayPriorityQueue<E extends Comparable<E>> extends Abstra
     }
 
     @Override
-    protected Object[] toArray() {
+    protected E[] toArray(final Class<? extends E[]> aClass) {
         final int size = min(actualSize, queue.length - 1);
 
-        return copyOf(queue, size);
+        return copyOf(queue, size, aClass);
     }
 
     @Override
