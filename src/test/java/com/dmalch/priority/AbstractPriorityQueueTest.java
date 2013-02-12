@@ -2,8 +2,8 @@ package com.dmalch.priority;
 
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.arrayContainingInAnyOrder;
 
 public abstract class AbstractPriorityQueueTest {
     public static final Integer[] UNSORTED_ARRAY = {12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
@@ -25,7 +25,7 @@ public abstract class AbstractPriorityQueueTest {
 
         final Integer[] top5 = whenAddValuesToQueue(unsortedArray, priorityQueue);
 
-        assertThat(top5, equalTo(expectedArray));
+        assertThat(top5, arrayContainingInAnyOrder(expectedArray));
     }
 
     private Integer[] whenAddValuesToQueue(final Integer[] unsortedArray, final PriorityQueue priorityQueue) {

@@ -24,13 +24,13 @@ public class BinaryHeapPriorityQueue extends AbstractPriorityQueue {
     }
 
     @Override
-    protected void insert(final Integer element) {
+    public void insert(final Integer element) {
         heap[actualSize++] = element;
         siftUp(heap, 0, actualSize - 1);
     }
 
     @Override
-    protected void deleteMax() {
+    public void deleteMax() {
         arraycopy(heap, 1, heap, 0, actualSize - 1);
         actualSize--;
 

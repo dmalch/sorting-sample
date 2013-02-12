@@ -1,5 +1,7 @@
 package com.dmalch.priority;
 
+import com.dmalch.sort.AbstractSort;
+
 import static java.lang.Math.min;
 import static java.lang.System.arraycopy;
 
@@ -22,12 +24,12 @@ public class UnorderedArrayPriorityQueue extends AbstractPriorityQueue {
     }
 
     @Override
-    protected void insert(final Integer element) {
+    public void insert(final Integer element) {
         queue[actualSize++] = element;
     }
 
     @Override
-    protected void deleteMax() {
+    public void deleteMax() {
         Integer max = 0;
 
         for (int i = 1; i < queue.length; i++) {
@@ -36,7 +38,7 @@ public class UnorderedArrayPriorityQueue extends AbstractPriorityQueue {
             }
         }
 
-        arraycopy(queue, max + 1, queue, max, queue.length - max - 1);
+        AbstractSort.swap(queue, max, actualSize - 1);
         actualSize--;
     }
 

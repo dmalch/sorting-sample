@@ -16,9 +16,5 @@ public abstract class AbstractPriorityQueue implements PriorityQueue {
 
     protected abstract Integer[] toArray();
 
-    protected abstract void insert(Integer element);
-
-    protected abstract void deleteMax();
-
     protected abstract boolean noMoreSpace();
 }
