@@ -16,7 +16,7 @@ public class TopDownMergeSort extends AbstractMergeSort implements Sort {
 
         logger.info(Arrays.toString(unsortedArray));
 
-        int mid = unsortedArray.length / 2;
+        final int mid = unsortedArray.length / 2;
 
         final T[] auxArray = unsortedArray.clone();
 
@@ -32,10 +32,10 @@ public class TopDownMergeSort extends AbstractMergeSort implements Sort {
             return;
         }
 
-        int mid1 = start + (mid - start) / 2;
+        final int mid1 = start + (mid - start) / 2;
         mergeRecursively(auxArray, unsortedArray, start, mid, mid1);
 
-        int mid2 = mid + (end - mid) / 2;
+        final int mid2 = mid + (end - mid) / 2;
         mergeRecursively(auxArray, unsortedArray, mid, end, mid2);
 
         merge(unsortedArray, auxArray, start, end, mid);

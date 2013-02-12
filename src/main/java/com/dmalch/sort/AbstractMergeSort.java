@@ -1,6 +1,8 @@
 package com.dmalch.sort;
 
-public abstract class AbstractMergeSort extends AbstractSort {
+import static com.dmalch.sort.AbstractSort.less;
+
+public abstract class AbstractMergeSort  {
     protected <T extends Comparable<T>> void merge(final T[] unsortedArray, final T[] auxArray, final int start, final int end, final int mid) {
 
         int firstIndex = start;

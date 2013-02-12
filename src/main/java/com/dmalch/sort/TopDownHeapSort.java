@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
+import static com.dmalch.sort.AbstractSort.swap;
+
 public class TopDownHeapSort extends AbstractHeapSort implements Sort {
 
     private static final transient Logger logger = LoggerFactory.getLogger(TopDownHeapSort.class);

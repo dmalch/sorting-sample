@@ -5,7 +5,10 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
-public class SelectionSort extends AbstractSort implements Sort {
+import static com.dmalch.sort.AbstractSort.less;
+import static com.dmalch.sort.AbstractSort.swap;
+
+public class SelectionSort implements Sort {
 
     private static final transient Logger logger = LoggerFactory.getLogger(SelectionSort.class);
 
