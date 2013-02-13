@@ -1,41 +1,63 @@
 package com.dmalch.table;
 
-import java.util.LinkedList;
-
 public class SequentialTable<K extends Comparable<K>, V> implements Table<K, V> {
 
-    private final LinkedList<Entry<K, V>> storage = new LinkedList<Entry<K, V>>();
+    private Node root = null;
 
     @Override
     public void put(final K key, final V value) {
-        storage.addFirst(new Entry<K, V>(key, value));
+        final Node node = new Node(key, value);
+
+        node.next = root;
+
+        root = node;
     }
 
     @Override
     public V get(final K key) {
-        for (final Entry<K, V> entry : storage) {
-            if (entry.key.compareTo(key) == 0) {
-                return entry.value;
+
+        Node current = root;
+
+        while (current != null) {
+            if (current.key.compareTo(key) == 0) {
+                return current.value;
             }
+
+            current = current.next;
         }
+
         return null;
     }
 
     @Override
     public void remove(final K key) {
-        for (final Entry<K, V> entry : storage) {
-            if (entry.key.compareTo(key) == 0) {
-                storage.remove(entry);
+        if (root == null) {
+            return;
+        }
+
+        if (root.key.compareTo(key) == 0) {
+            root = root.next;
+            return;
+        }
+
+        Node current = root;
+
+        while (current.next != null) {
+            if (current.next.key.compareTo(key) == 0) {
+                current.next = current.next.next;
+                break;
             }
+
+            current = current.next;
         }
     }
 
-    private class Entry<K, V> {
+    private class Node {
         private final K key;
         private final V value;
+        public Node next;
 
-        public Entry(final K key, final V value) {
-
+        public Node(final K key, final V value) {
             this.key = key;
             this.value = value;
         }

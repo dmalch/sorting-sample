@@ -40,7 +40,7 @@ public class BinarySearchTable<K extends Comparable<K>, V> implements Table<K, V
         int end = actualSize;
 
         while (start < end) {
-            final int mid = start + (end - start) / 2;
+            final int mid = start + (end - start - 1) / 2;
 
             if (keys[mid].compareTo(key) == 0) {
                 return mid;

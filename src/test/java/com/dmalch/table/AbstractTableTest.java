@@ -14,8 +14,8 @@ public abstract class AbstractTableTest {
     public void testAddAndGetValues() throws Exception {
         final Table<Integer, Integer> table = givenTable();
 
-        final List<Integer> keys = asList(1, 2, 3, 6, 5, 4);
-        final List<Integer> values = asList(1, 2, 3, 6, 5, 4);
+        final List<Integer> keys = asList(3, 2, 1, 6, 5, 4);
+        final List<Integer> values = asList(3, 2, 1, 6, 5, 4);
 
         for (int i = 0; i < keys.size(); i++) {
             table.put(keys.get(i), values.get(i));
@@ -45,6 +45,26 @@ public abstract class AbstractTableTest {
         table.put(3, 3);
         table.remove(1);
         table.remove(2);
+        table.remove(3);
+
+        assertThat(table.get(1), nullValue());
+        assertThat(table.get(2), nullValue());
+        assertThat(table.get(3), nullValue());
+    }
+
+    @Test
+    public void testRemove2() throws Exception {
+        final Table<Integer, Integer> table = givenTable();
+
+        table.put(3, 3);
+        table.put(1, 1);
+        table.put(2, 2);
+        table.put(4, 4);
+        table.put(5, 5);
+        table.remove(1);
+        table.remove(2);
+        table.remove(5);
+        table.remove(4);
         table.remove(3);
 
         assertThat(table.get(1), nullValue());
