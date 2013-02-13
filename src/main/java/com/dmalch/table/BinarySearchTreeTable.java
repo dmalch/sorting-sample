@@ -6,7 +6,7 @@ public class BinarySearchTreeTable<K extends Comparable<K>, V> implements Table<
 
     @Override
     public void put(final K key, final V value) {
-        root = createNodeIfNull(root, root, key);
+        root = createNodeIfNull(root, key);
         put(root, key, value);
     }
 
@@ -15,19 +15,18 @@ public class BinarySearchTreeTable<K extends Comparable<K>, V> implements Table<
         if (cmp == 0) {
             root.value = value;
         } else if (cmp > 0) {
-            root.left = createNodeIfNull(root.left, root, key);
+            root.left = createNodeIfNull(root.left, key);
             put(root.left, key, value);
         } else {
-            root.right = createNodeIfNull(root.right, root, key);
+            root.right = createNodeIfNull(root.right, key);
             put(root.right, key, value);
         }
     }
 
-    private Node createNodeIfNull(final Node original, final Node parent, final K key) {
+    private Node createNodeIfNull(final Node original, final K key) {
         if (original == null) {
             final Node node = new Node();
             node.key = key;
-            node.parent = parent;
             return node;
         }
         return original;
@@ -70,21 +69,14 @@ public class BinarySearchTreeTable<K extends Comparable<K>, V> implements Table<
                     return null;
                 }
 
-                root.left.parent = root.parent;
                 return root.left;
             }
 
             final Node replacement = min(root.right);
+            final Node right = deleteMin(root.right);
 
-            if (replacement.parent.key.compareTo(root.key) != 0) {
-                replacement.parent.left = replacement.right;
-                replacement.right.parent = replacement.parent;
-
-                replacement.right = root.right;
-            }
-
-            replacement.parent = root.parent;
             replacement.left = root.left;
+            replacement.right = right;
             return replacement;
         } else if (cmp > 0) {
             root.left = remove(root.left, key);
@@ -92,6 +84,14 @@ public class BinarySearchTreeTable<K extends Comparable<K>, V> implements Table<
             root.right = remove(root.right, key);
         }
         return root;
+    }
+
+    private Node deleteMin(final Node node) {
+        if (node.left == null) {
+            return node.right;
+        }
+        node.left = deleteMin(node.left);
+        return node;
     }
 
     private Node min(final Node node) {
@@ -106,7 +106,6 @@ public class BinarySearchTreeTable<K extends Comparable<K>, V> implements Table<
         public V value;
         public Node left;
         public Node right;
-        public Node parent;
 
         @Override
         public String toString() {
